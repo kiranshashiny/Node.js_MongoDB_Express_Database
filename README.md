@@ -9,7 +9,14 @@ npm install mongoose
 npm install express
 npm install mongodb
 
-npm 3.0.8 is required for running this successfully.
+### To run the code
+
+	npm init
+
+	node app.js
+
+
+mongodb 3.0.8 is required for running this successfully.
 
 	$ npm install mongodb@3.0.8
 	npm WARN nodetest@1.0.0 No description
@@ -19,3 +26,24 @@ npm 3.0.8 is required for running this successfully.
 	updated 1 package in 4.143s
 
 
+### Start mongodb in a terminal
+
+	mongod --config /usr/local/etc/mongod.conf
+
+
+This will automatically open the page to enter the names.
+
+### To add names to the database. 
+
+	Open the browser and point the URL to http://localhost:3000
+
+### To view users entered so far
+
+	http://localhost:3000/usersList
+
+
+### To delete all the users
+
+	open a terminal and enter this command line
+
+	$curl -X DELETE http://localhost:3000/deleteAll
