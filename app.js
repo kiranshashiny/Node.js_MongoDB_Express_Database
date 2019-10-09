@@ -12,6 +12,7 @@ var nameSchema = new mongoose.Schema({
     firstName: String,
     lastName: String
 });
+
 var User = mongoose.model("User", nameSchema);
 
 app.get("/", (req, res) => {
