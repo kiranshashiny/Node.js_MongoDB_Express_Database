@@ -3,7 +3,7 @@ Code to demo the Express web server which collects data from users and can do CR
 
 Prerequisites
 
-Install mongodb  on the local laptop ( Google for specific directions )
+Install mongodb  on the local laptop ( Google for Installation Instructions )
 
 npm install mongoose
 npm install express
@@ -44,3 +44,54 @@ mongodb v3.0.8 is required for running this successfully.
 	open a terminal and enter this command line
 
 	$curl -X DELETE http://localhost:3000/deleteAll
+
+### Some installation and configuration instructions
+
+$ node -v
+v9.4.0
+$ npm -v
+5.6.0
+
+
+### Mongodb
+
+$ mongo -version
+MongoDB shell version v4.2.0
+git version: a4b751dcf51dd249c5865812b390cfd1c0129c30
+allocator: system
+modules: none
+build environment:
+    distarch: x86_64
+    target_arch: x86_64
+
+
+
+####  Insert some collections into db
+
+If you want to insert records just name and email.
+
+The _id is created by Mongo db itself !
+
+{
+    "_id" : 9999,
+    "username" : "Shashi Kiran",
+    "email" : "shkiran4@in.amazon.com"
+}
+
+
+Open a mongo console and enter this and some informational lines are shown followed by a command prompt
+
+
+	$ mongo
+	MongoDB shell version v4.2.0
+	connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+	Implicit session: session { "id" : UUID("cfb64829-0f36-48df-9a29-2ea1767b0853") }
+	MongoDB server version: 4.2.0
+	Server has startup warnings: 
+	...
+	...
+	>
+
+
+To insert some records command line
+	>db.usercollection.insert({ "username" : "Shashi Kiran", "email" : "shkiran4@in.amazon.com" })
