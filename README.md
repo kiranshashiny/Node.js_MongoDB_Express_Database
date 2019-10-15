@@ -149,6 +149,15 @@ Open a mongo console and enter this and some informational lines are shown follo
 
 >
 
+Another Example :
+
+
+	use tutorialkart
+
+	db.usercollection.insert({ "username" : "testuser1", "email" : "testuser1@testdomain.com" })
+
+	db.usercollection.find().pretty()
+
 ##### To show all the databases
 
 	show dbs
