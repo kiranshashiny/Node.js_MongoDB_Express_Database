@@ -125,11 +125,15 @@ Open a mongo console and enter this and some informational lines are shown follo
 
 
 ##### Create db
-	use tutorialkart
+	<b> use tutorialkart </b>
 
-		and insert into db - no need to give db name
+	and insert into db - no need to give db name
 
-   	db.users.insertOne( { name: "Foo", age: 34, cars: [ "BMW 320d", "Audi R8" ] } )	
+   	db.usercollection.insert( { name: "Foo", age: 34, cars: [ "BMW 320d", "Audi R8" ] } )	
+
+	and print
+
+	db.usercollection.find().pretty()
 
 
 ##### To show all the databases
