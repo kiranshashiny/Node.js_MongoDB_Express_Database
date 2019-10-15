@@ -123,6 +123,14 @@ Open a mongo console and enter this and some informational lines are shown follo
 	
 	db.usercollection.find().pretty()
 
+```
+{
+	"_id" : ObjectId("5da5ae46297649b48fc7169d"),
+	"username" : "testuser1",
+	"email" : "testuser1@testdomain.com"
+}
+```
+
 
 ##### Create db
 	use tutorialkart
@@ -131,23 +139,15 @@ Open a mongo console and enter this and some informational lines are shown follo
 
 	db.usercollection.find().pretty()
 
->db.usercollection.find().pretty()
->
->"_id" : ObjectId("5da5ad24297649b48fc7169c"),
+```
+{
+	"_id" : ObjectId("5da5ae46297649b48fc7169d"),
+	"username" : "testuser1",
+	"email" : "testuser1@testdomain.com"
+}
 
->"name" : "Foo",
+```
 
->"age" : 34,
-
->"cars" : [
-
->	"BMW 320d",
-
->	"Audi R8"
-
->]
-
->
 
 Another Example :
 
