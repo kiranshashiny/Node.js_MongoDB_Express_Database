@@ -66,7 +66,7 @@ build environment:
 
 
 
-####  Insert some collections into db
+#####  Insert some collections into db
 
 If you want to insert records just name and email.
 
@@ -93,5 +93,31 @@ Open a mongo console and enter this and some informational lines are shown follo
 	>
 
 
-To insert some records command line
+##### To insert some records command line
+
 	>db.usercollection.insert({ "username" : "Shashi Kiran", "email" : "shkiran4@in.amazon.com" })
+
+
+##### To print the output
+
+	>  db.usercollection.find().pretty()
+	{
+		"_id" : ObjectId("5da44b1320ba0c06a1a1c1bc"),
+		"username" : "testuser1",
+		"email" : "testuser1@testdomain.com"
+	}
+
+##### To insert single records
+
+	db.usercollection.insert({ "username" : "testuser1", "email" : "testuser1@testdomain.com" })
+
+
+#####  To insert multiple records
+
+	multipleentries = [{ "username" : "Shashi Kiran", "email" : "shkiran4@indian.com" }, { "username" : "Ravi Prakash", "email" : "ravi@prakash.com" }]
+	db.usercollection.insert(multipleentries);
+
+
+##### Print stuff
+
+db.usercollection.find().pretty()
