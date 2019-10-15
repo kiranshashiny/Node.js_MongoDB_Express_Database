@@ -125,7 +125,7 @@ Open a mongo console and enter this and some informational lines are shown follo
 
 
 ##### Create db
-	**use tutorialkart**
+	<h1> use tutorialkart**
 
 	and insert into db - no need to give db name
 
