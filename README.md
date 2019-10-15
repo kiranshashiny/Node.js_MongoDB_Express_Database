@@ -125,13 +125,9 @@ Open a mongo console and enter this and some informational lines are shown follo
 
 
 ##### Create db
-	> use tutorialkart
-
-	and insert into db - no need to give db name
+	use tutorialkart
 
    	db.usercollection.insert( { name: "Foo", age: 34, cars: [ "BMW 320d", "Audi R8" ] } )	
-
-	and print
 
 	db.usercollection.find().pretty()
 
