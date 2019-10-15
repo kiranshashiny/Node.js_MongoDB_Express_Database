@@ -171,6 +171,50 @@ Another Example :
 
 
 
+Insert Multiple entries into database
+
+```
+use tutorialkart
+switched to db tutorialkart
+newstuff = [{ "username" : "testuser2", "email" : "testuser2@testdomain.com" }, { "username" : "testuser3", "email" : "testuser3@testdomain.com" }]
+[
+	{
+		"username" : "testuser2",
+		"email" : "testuser2@testdomain.com"
+	},
+	{
+		"username" : "testuser3",
+		"email" : "testuser3@testdomain.com"
+	}
+]
+
+db.usercollection.insert(newstuff);
+BulkWriteResult({
+	"writeErrors" : [ ],
+	"writeConcernErrors" : [ ],
+	"nInserted" : 2,
+	"nUpserted" : 0,
+	"nMatched" : 0,
+	"nModified" : 0,
+	"nRemoved" : 0,
+	"upserted" : [ ]
+})
+
+
+db.usercollection.find().pretty()
+{
+	"_id" : ObjectId("5da5b566efe3e6e6ba465f50"),
+	"username" : "testuser2",
+	"email" : "testuser2@testdomain.com"
+}
+{
+	"_id" : ObjectId("5da5b566efe3e6e6ba465f51"),
+	"username" : "testuser3",
+	"email" : "testuser3@testdomain.com"
+}
+
+```
+
 ##### To show all the databases
 
 	show dbs
