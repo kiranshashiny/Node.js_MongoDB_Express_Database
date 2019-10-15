@@ -119,5 +119,36 @@ Open a mongo console and enter this and some informational lines are shown follo
 
 
 ##### Print stuff
+	db.usercollection.insert({ "username" : "testuser1", "email" : "testuser1@testdomain.com" })
+	
+	db.usercollection.find().pretty()
 
-db.usercollection.find().pretty()
+
+##### Create db
+	use tutorialkart
+
+		and insert into db - no need to give db name
+
+   	db.users.insertOne( { name: "Foo", age: 34, cars: [ "BMW 320d", "Audi R8" ] } )	
+
+
+##### To show all the databases
+
+	show dbs
+
+##### To drop a database
+
+	> show dbs
+	admin      0.000GB
+	config     0.000GB
+	local      0.000GB
+	mydb       0.000GB
+	node-demo  0.000GB
+	nodetest1  0.000GB
+	test       0.000GB
+
+	> use nodetest1
+	switched to db nodetest1
+
+	> db.dropDatabase()
+	{ "dropped" : "nodetest1", "ok" : 1 }
