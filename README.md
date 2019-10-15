@@ -158,6 +158,16 @@ Another Example :
 
 	db.usercollection.find().pretty()
 
+```
+{
+	"_id" : ObjectId("5da5ae46297649b48fc7169d"),
+	"username" : "testuser1",
+	"email" : "testuser1@testdomain.com"
+}
+```
+
+
+
 ##### To show all the databases
 
 	show dbs
