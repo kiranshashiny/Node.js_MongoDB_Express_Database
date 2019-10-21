@@ -378,7 +378,11 @@ This finds the first entry in the database "mydb" and in collections "customers"
 ### Find/List first entry in the db "mydb" and "customers"
 ### Find is similar to 'select * from' 
 
+node findone.js
+
 Lists the first entry in the "mydb" database and "customers" collections.
+
+Note: Make changes in "database", "collections" and the "column name" 
 
 ```
 
@@ -397,7 +401,10 @@ MongoClient.connect(url, function(err, db) {
 });
 ```
 
+
 ### Find/List all the entries in the db "mydb" and "customers" collections.
+node findall.js
+
 ```
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
@@ -413,4 +420,27 @@ MongoClient.connect(url, function(err, db) {
   });
 });
 
+```
+
+
+
+### Error Handling ! throw catch 
+
+The throw catch handling is to call the function if ( err) { throw ( err)} 
+Here if the file does not exist, then an error is raised.
+
+node readfile.js
+```
+
+var fs = require('fs');
+
+fs.open('mynewfile1.txt', 'r', function (err) {
+  if (err) throw err;
+  console.log('Opened file succeeded');
+});
+
+fs.readFile('demofile1.html', function(err, data) {
+       if (err ) throw err;  
+       console.log ("read file opened"); 
+});
 ```
