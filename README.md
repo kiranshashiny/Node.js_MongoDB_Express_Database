@@ -429,18 +429,52 @@ MongoClient.connect(url, function(err, db) {
 The throw catch handling is to call the function if ( err) { throw ( err)} 
 Here if the file does not exist, then an error is raised.
 
-node readfile.js
-```
+node readfile.js (one shot, to read line by line - scroll below) 
 
+prints the entire contents of the file. ( https://code-maven.com/argv-raw-command-line-arguments-in-nodejs)
+
+```
 var fs = require('fs');
 
-fs.open('mynewfile1.txt', 'r', function (err) {
+fs.open('GTX.csv', 'r', function (err) {
   if (err) throw err;
   console.log('Opened file succeeded');
 });
 
-fs.readFile('demofile1.html', function(err, data) {
-       if (err ) throw err;  
-       console.log ("read file opened"); 
+
+fs.readFile('GTX.csv', function(err, contents) {
+    console.log(contents);
+});
+ 
+console.log('after calling readFile');
+```
+
+### Read File line by line 
+
+node readlinebyline.js
+
+prints the line one at a time.
+
+```
+const readline = require('readline');
+const fs = require('fs');
+
+// create instance of readline
+// each instance is associated with single input stream
+let rl = readline.createInterface({
+    input: fs.createReadStream('GTX.csv')
+});
+
+let line_no = 0;
+
+// event is emitted after each line
+rl.on('line', function(line) {
+    line_no++;
+    console.log(line);
+});
+
+// end
+rl.on('close', function(line) {
+    console.log('Total lines : ' + line_no);
 });
 ```
