@@ -271,8 +271,7 @@ db.usercollection.find().pretty()
 
 ### Node.js Driver Functions
 
-##### Create
-
+##### Create and Insert one document into database "mydb" with "collections" having "name" and "address" as fields.
 
 ```
 var MongoClient = require('mongodb').MongoClient;
@@ -304,39 +303,80 @@ MongoClient.connect(url, function(err, db) {
 
 ```
 
-##### Delete
+##### Insert Many documents into database "mydb", this inserts 2 collections, "powers" and "heroes"
 
-
-##### Find or select * from 
-This finds the first entry in the database "mydb" and in collections "customers"
-
-node findone.js
+node insertmany.js
 
 ```
+$ cat insertmany.js 
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
   var dbo = db.db("mydb");
-  dbo.collection("customers").findOne({}, function(err, result) {
+  var mypowers = [
+   { id: 1, name: 'flying' },
+   { id: 2, name: 'teleporting' },
+   { id: 3, name: 'super strengh' },
+   { id: 4, name: 'clairvoyance'},
+   { id: 5, name: 'mind reading' }
+
+  ];
+
+  var myheroes = [
+     {
+       id: 1,
+       type: 'super-dog',
+       displayName: 'The Rex',
+       powers: [1, 4],
+       img: 'dog.jpg',
+       busy: false
+    },
+    {
+       id: 2,
+       type: 'super-horse',
+       displayName: 'Peter Pan',
+       powers: [2, 5],
+       img: 'horse.jpg',
+       busy: false
+   },
+   {
+       id: 3,
+       type: 'super-cat',
+       displayName: 'Tom',
+       powers: [3, 2],
+       img: 'cat.jpg',
+       busy: false
+   },
+   {
+       id: 4,
+       type: 'super-hamster',
+       displayName: 'Jerry',
+       powers: [1, 5],
+       img: 'hamster.jpg',
+       busy: false
+   }
+  ];
+  dbo.collection("heroes").insertMany(myheroes, function(err, res) {
     if (err) throw err;
+    console.log("Number of documents inserted: " + res.insertedCount);
+    db.close();
+  });
 
-    for ( i=0; i< 10; i ++ ){
-        console.log ("");
-
-    }
-    console.log ("First entry");
-    console.log(result.name);
+  dbo.collection("powers").insertMany(mypowers, function(err, res) {
+    if (err) throw err;
+    console.log("Number of documents inserted: " + res.insertedCount);
     db.close();
   });
 });
-
 ```
 
 
+This finds the first entry in the database "mydb" and in collections "customers"
 
-##### Find/List first entry in the db
+##### Find/List first entry in the db "mydb" and "customers"
+##### Find is similar to 'select * from' 
 
 Lists the first entry in the "mydb" database and "customers" collections.
 
@@ -357,9 +397,8 @@ MongoClient.connect(url, function(err, db) {
 });
 ```
 
-##### Find/List all the entries in the db
+##### Find/List all the entries in the db "mydb" and "customers" collections.
 ```
-
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
