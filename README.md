@@ -355,8 +355,10 @@ MongoClient.connect(url, function(err, db) {
     db.close();
   });
 });
+```
 
 ##### Find all the entries in the db
+```
 
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
