@@ -304,14 +304,56 @@ MongoClient.connect(url, function(err, db) {
 
 ```
 
-##### Insert
-
-
 ##### Delete
 
 
 ##### Find or select * from 
+This finds the first entry in the database "mydb" and in collections "customers"
+
+node findone.js
+
+```
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  dbo.collection("customers").findOne({}, function(err, result) {
+    if (err) throw err;
+
+    for ( i=0; i< 10; i ++ ){
+        console.log ("");
+
+    }
+    console.log ("sdfdsfdsaf");
+    console.log(result.name);
+    db.close();
+  });
+});
+
+```
 
 
-##### Find the first one only
 
+##### Find all the entries in the db
+
+Searches the "mydb" database and "customers" collections.
+
+```
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  dbo.collection("customers").find({}).toArray( function(err, result) {
+    if (err) throw err;
+
+    console.log(result);
+    db.close();
+  });
+});
+
+```
