@@ -326,7 +326,7 @@ MongoClient.connect(url, function(err, db) {
         console.log ("");
 
     }
-    console.log ("sdfdsfdsaf");
+    console.log ("First entry");
     console.log(result.name);
     db.close();
   });
@@ -336,9 +336,9 @@ MongoClient.connect(url, function(err, db) {
 
 
 
-##### Find all the entries in the db
+##### Find/List first entry in the db
 
-Searches the "mydb" database and "customers" collections.
+Lists the first entry in the "mydb" database and "customers" collections.
 
 ```
 
@@ -350,14 +350,14 @@ MongoClient.connect(url, function(err, db) {
   var dbo = db.db("mydb");
   dbo.collection("customers").find({}).toArray( function(err, result) {
     if (err) throw err;
-
+    console.log ("All the entries in the db")
     console.log(result);
     db.close();
   });
 });
 ```
 
-##### Find all the entries in the db
+##### Find/List all the entries in the db
 ```
 
 var MongoClient = require('mongodb').MongoClient;
