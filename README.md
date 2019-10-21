@@ -269,9 +269,9 @@ db.usercollection.find().pretty()
 	{ "dropped" : "nodetest1", "ok" : 1 }
 
 
-### Node.js Driver Functions
+## Node.js Driver Functions
 
-##### Create and Insert one document into database "mydb" with "collections" having "name" and "address" as fields.
+### Create and Insert one document into database "mydb" with "collections" having "name" and "address" as fields.
 
 ```
 var MongoClient = require('mongodb').MongoClient;
@@ -303,7 +303,7 @@ MongoClient.connect(url, function(err, db) {
 
 ```
 
-##### Insert Many documents into database "mydb", this inserts 2 collections, "powers" and "heroes"
+### Insert Many documents into database "mydb", this inserts 2 collections, "powers" and "heroes"
 
 node insertmany.js
 
@@ -375,8 +375,8 @@ MongoClient.connect(url, function(err, db) {
 
 This finds the first entry in the database "mydb" and in collections "customers"
 
-##### Find/List first entry in the db "mydb" and "customers"
-##### Find is similar to 'select * from' 
+### Find/List first entry in the db "mydb" and "customers"
+### Find is similar to 'select * from' 
 
 Lists the first entry in the "mydb" database and "customers" collections.
 
@@ -397,7 +397,7 @@ MongoClient.connect(url, function(err, db) {
 });
 ```
 
-##### Find/List all the entries in the db "mydb" and "customers" collections.
+### Find/List all the entries in the db "mydb" and "customers" collections.
 ```
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
