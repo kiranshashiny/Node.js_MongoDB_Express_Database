@@ -5,7 +5,7 @@ const assert = require('assert');
 const url = 'mongodb://localhost:27017';
 
 // Database Name
-const dbName = 'myproject';
+const dbName = 'mydb';
 
 // Create a new MongoClient
 const client = new MongoClient(url);
@@ -18,13 +18,13 @@ client.connect(function(err, client) {
   const db = client.db(dbName);
 
   // Insert a single document
-  db.collection('inserts').insertOne({a:1}, function(err, r) {
+  db.collection('customers').insertOne({a:1}, function(err, r) {
     assert.equal(null, err);
     assert.equal(1, r.insertedCount);
     console.log ( "Inserted a single record ")
 
     // Insert multiple documents
-    db.collection('inserts').insertMany([{a:2}, {a:3}], function(err, r) {
+    db.collection('customers').insertMany([{a:2}, {a:3}], function(err, r) {
       assert.equal(null, err);
       assert.equal(2, r.insertedCount);
       console.log ( "Inserted multiple records ")
