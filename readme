@@ -1,0 +1,10 @@
+To start this run the command.
+
+$node app.js
+
+At this time the node-demo db is NOT created.
+
+It only gets created at the time of insertion http://localhost:3000
+It does a POST of addname and the db gets created.
+
+

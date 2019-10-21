@@ -30,6 +30,15 @@ mongodb v3.0.8 is required for running this successfully.
 
 	mongod --config /usr/local/etc/mongod.conf
 
+### To create a new database the first time, run // will create a new db called "mydb"
+
+	node createdb.js
+
+
+### To create a new collection ( records in database "mydb" ) run 
+	node createcollection.js
+
+
 ### To add names to the database. 
 
 	Open the browser and point the URL to http://localhost:3000
@@ -38,6 +47,29 @@ mongodb v3.0.8 is required for running this successfully.
 ### To view users entered so far
 
 	http://localhost:3000/usersList
+
+### To query all entries in db - command line
+
+	mongo
+	show dbs // wil show all database, check for mydb
+	use mydb  // assuming that there are some entries
+
+	// To add entries, look at createdb.js
+	// to add entries in a collection, look at createcollections.js ( node createcollections.js)
+
+	db.users.find()  // will print all entries
+
+	db.users.find({}, {userid:1}) // list the userid, or 'firstname' as first argument in output.
+
+	e.g:
+	db.users.find({}, {firstName:1})
+		{ "_id" : ObjectId("5daaf2c6020bb20347eb6c2c"), "firstName" : "sdfdsaf" }
+
+	db.users.find({}, {firstName:1, lastName:2})
+		{ "_id" : ObjectId("5daaf2c6020bb20347eb6c2c"), "firstName" : "sdfdsaf", "lastName" : "sdfdsfas" }
+
+	db.users.find({}, {firstName:1, lastName:2, firstName:1})
+		{ "_id" : ObjectId("5daaf2c6020bb20347eb6c2c"), "firstName" : "sdfdsaf", "lastName" : "sdfdsfas" }
 
 ### To delete all the users
 
@@ -235,3 +267,51 @@ db.usercollection.find().pretty()
 
 	> db.dropDatabase()
 	{ "dropped" : "nodetest1", "ok" : 1 }
+
+
+### Node.js Driver Functions
+
+##### Create
+
+
+```
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  var myobj = { name: "Shashi Kiran SK Consultants", address: "Super House" };
+
+  dbo.collection("customers").insertOne(myobj, function(err, res) {
+    if (err) throw err;
+    console.log("1 document inserted");
+
+
+  // This prints just the first one.
+  console.log ( "Printing the entries one ");
+  dbo.collection("customers").findOne({} , function ( err, result ){
+ 	if ( err) {
+		throw err;
+	}
+	console.log ( result.name );
+  });
+
+  
+  db.close();
+  });
+});
+
+```
+
+##### Insert
+
+
+##### Delete
+
+
+##### Find or select * from 
+
+
+##### Find the first one only
+
