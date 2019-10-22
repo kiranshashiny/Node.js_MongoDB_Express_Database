@@ -422,6 +422,16 @@ MongoClient.connect(url, function(err, db) {
 
 ```
 
+Another example - query
+
+```
+  // This one gets me just the records that have the word flying.
+  const cursor = dbo.collection('powers').find({ name: "flying" }).toArray( function ( err, result ) {
+     console.log ( result );
+     db.close();
+  });
+```
+
 
 
 ### Error Handling ! throw catch 

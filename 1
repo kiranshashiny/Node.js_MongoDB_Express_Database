@@ -1,6 +1,10 @@
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
+
+function function2(){
+
+}
 var db;
 
 MongoClient.connect(url, function(err, db) {
@@ -9,9 +13,9 @@ MongoClient.connect(url, function(err, db) {
   var mypowers = [
    { id: 1, name: 'flying' },
    { id: 2, name: 'teleporting' },
-   { id: 3, name: 'superstrengh' },
+   { id: 3, name: 'super strengh' },
    { id: 4, name: 'clairvoyance'},
-   { id: 5, name: 'mindreading' }
+   { id: 5, name: 'mind reading' }
   ];
 
   var myheroes = [
@@ -31,10 +35,17 @@ MongoClient.connect(url, function(err, db) {
     
   }); 
 
+  var seconds=2;
+  var waitTill = new Date(new Date().getTime() + seconds * 1000);
+  while(waitTill > new Date()){}
+
   dbo.collection('powers').insertMany(mypowers, function(err, res) {
     if (err) throw err;
     console.log("Number of documents inserted: " + res.insertedCount);
   });
+  var seconds=2;
+  var waitTill = new Date(new Date().getTime() + seconds * 1000);
+  while(waitTill > new Date()){}
 
   console.log ("Now printing the number of elements 'heroes'")
   dbo.collection("heroes").find({}).toArray( function(err, result) {
@@ -51,3 +62,4 @@ MongoClient.connect(url, function(err, db) {
     db.close();
   });
 });
+
