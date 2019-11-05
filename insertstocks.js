@@ -261,12 +261,33 @@ MongoClient.connect(url, function(err, db) {
 {stock: 'GTX', date:'2019-10-14', open: '9.51'}
 
   ];
+  var mystocks_summary = [
+	
+	{id: 1, displayName: 'GTX', previous_close:'9.40', open: '9.42'}
+	{id: 2, displayName: 'GTX', previous_close:'9.40', open: '9.42'}
+	{id: 3, displayName: 'GTX', previous_close:'9.40', open: '9.42'}
+	{id: 4, displayName: 'GTX', previous_close:'9.40', open: '9.42'}
+	{id: 5, displayName: 'GTX', previous_close:'9.40', open: '9.42'}
+	{id: 6, displayName: 'GTX', previous_close:'9.40', open: '9.42'}
+  ];
+  var mystocks_profile = [
+	
+	{stock: 'GTX', ceo:'Olivier', vp: 'Craig'}
+  ];
 
 
   dbo.collection('stocks').insertMany(mystocks, function(err, res) {
     if (err) throw err;
     console.log("Number of documents inserted: " + res.insertedCount);
+    //db.close();
   });
+
+  dbo.collection('stocks_summary').insertOne({stock: 'GTX', previous_close:'9.40', bid: '9.42'}, function(err, r) {
+    //assert.equal(null, err);
+    //#assert.equal(1, r.insertedCount);
+    console.log ( "Inserted a single record ")
+  });
+
 
   console.log ("Now printing the number of elements 'stocks'")
   dbo.collection("stocks").find({}).toArray( function(err, result) {

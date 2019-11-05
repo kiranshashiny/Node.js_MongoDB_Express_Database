@@ -1,0 +1,2 @@
+curl -i --request POST --header "Content-Type: application/json" --data '{"email": "shkiran4@in.ibm.com", "password":"cisco"}' localhost:3000/sessions
+curl -i --request POST --header "Content-Type: application/json" --data '{"email": "shkiran4@in.ibm.com", "password":"cisco"}' localhost:3000/sessions

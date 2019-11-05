@@ -405,6 +405,8 @@ MongoClient.connect(url, function(err, db) {
 ### Find/List all the entries in the db "mydb" and "customers" collections.
 node findall.js
 
+https://mongodb.github.io/node-mongodb-native/markdown-docs/queries.html
+
 ```
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
@@ -422,7 +424,7 @@ MongoClient.connect(url, function(err, db) {
 
 ```
 
-Another example - query
+Another example - query for name containing flying.
 
 ```
   // This one gets me just the records that have the word flying.
@@ -432,6 +434,13 @@ Another example - query
   });
 ```
 
+Another example - query using regular expressions. all fields containing name that starts with a..z
+```
+  const cursor = dbo.collection('powers').find({ name: /^[a-z]/ }).toArray( function ( err, result ) {
+     console.log ( result );
+     db.close();
+  });
+```
 
 
 ### Error Handling ! throw catch 

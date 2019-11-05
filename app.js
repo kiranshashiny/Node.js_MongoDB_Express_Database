@@ -11,7 +11,9 @@ mongoose.connect("mongodb://localhost:27017/mydb");
 
 var nameSchema = new mongoose.Schema({
     firstName: String,
-    lastName: String
+    lastName: String,
+    password: String,
+    email : String
 });
 
 var User = mongoose.model("User", nameSchema);
@@ -22,15 +24,15 @@ app.get("/", (req, res) => {
 
 app.post("/addname", (req, res) => {
     var myData = new User(req.body);
-    console.log ( "hello ");
     console.log ( req.body);
-    console.log ( "First name is ");
-    console.log ( req.body.firstName );
-    console.log ( "last name is ");
-    console.log ( req.body.lastName );
+    console.log ( "First name is ", req.body.firstName );
+    console.log ( "Last name  is ", req.body.lastName);
+    console.log ( "email name is ", req.body.email);
+    console.log ( "password is   ",req.body.password);
+
     myData.save()
         .then(item => {
-            res.send("Name saved to database");
+            res.send("Name saved to database, now try /usersList, /deleteAll");
         })
         .catch(err => {
             res.status(400).send("Unable to save to database");
@@ -47,6 +49,8 @@ app.get('/usersList', function(req, res) {
 
     console.log ( "Users are ");
     users.forEach(function(user) {
+    console.log ( user );
+    
       userMap[user._id] = user;
       if ( user.firstName == "ravi" ) {
 	console.log ("User ravi found ");
@@ -56,13 +60,37 @@ app.get('/usersList', function(req, res) {
   });
 });
 
-app.delete('/deleteAll', function(req, res) {
+app.post('/sessions', function (req, res) {
+    console.log(req.body.email);
+    console.log(req.body.password);
+    User.find({
+        email: req.body.email,
+        password: req.body.password
+    }, function (err, users) {
+        if (err) {
+            console.log('User Not Found');
+            res.status(400);
+        }
+    	var userMap = {};
+
+    	users.forEach(function(user) {
+      		userMap[user._id] = user;
+		console.log ( user );
+    	});
+	
+        //console.log(req.session.firstName);
+    });
+
+    return res.redirect('/Management/Index');
+});
+
+app.get('/deleteAll', function(req, res) {
     console.log ( "In the delete All function ")
     User.remove({}, function(err) {
             if (err) {
                 console.log(err)
             } else {
-                res.end('success');
+                res.end('success, was able to delete all records. !');
             }
         }
     );
