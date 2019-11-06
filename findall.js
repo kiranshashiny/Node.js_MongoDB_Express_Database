@@ -14,11 +14,17 @@ MongoClient.connect(url, function(err, db) {
 */
 
   // find just one. GTX, ATEN
-  const cursor = dbo.collection('stocks_summary').find({ Symbol: "WUBA" }).toArray( function ( err, result ) {
+  const cursor = dbo.collection('stocksummary').find({ Symbol: "WUBA" }).toArray( function ( err, result ) {
      console.log ( result );
      db.close();
   });
 
+/*  // find all , for data inserted using Mongoose.
+  cursor = dbo.collection('stocksummary').find({}).toArray( function ( err, result ) {
+     console.log ( result );
+     db.close();
+  });
+*/
 
 /*
   // This one gets me just the records that have the word flying.
